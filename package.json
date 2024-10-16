@@ -1,0 +1,130 @@
+{
+  "name": "cocover",
+  "displayName": "CoCover",
+  "publisher": "mayashavin",
+  "description": "To generate a cover image for your blog posts",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.94.0"
+  },
+  "categories": [
+    "AI",
+    "Chat"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mayashavin/cocover"
+  },
+  "main": "./dist/extension.js",
+  "extensionDependencies": [
+    "github.copilot-chat"
+  ],
+  "extensionKind": [
+    "ui"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "contributes": {
+    "menus": {
+      "editor/context": [
+        {
+          "when": "editorFocus && resourceLangId == markdown && editorHasSelection",
+          "group": "1_copilot@1",
+          "submenu": "cocover.submenu"
+        }
+      ],
+      "cocover.submenu": [
+        {
+          "command": "cocover.seocontent",
+          "title": "Fix content for SEO"
+        },
+        {
+          "command": "inlineChat.start",
+          "title": "Generate cover image"
+        }
+      ]
+    },
+    "submenus": [
+      {
+        "id": "cocover.submenu",
+        "label": "CoCover"
+      }
+    ],
+    "commands": [
+      {
+        "command": "cocover.seocontent",
+        "title": "Fix content for SEO",
+        "category": "CoCover"
+      },
+      {
+        "command": "cocover.generateFromSelection",
+        "title": "Generate a cover image for your blog post",
+        "category": "CoCover"
+      }
+    ],
+    "chatParticipants": [
+      {
+        "id": "cocover.cover",
+        "fullName": "CoCover",
+        "name": "cocover",
+        "description": "Would you like to generate a cover image for your blog post?",
+        "isSticky": true,
+        "commands": [
+          {
+            "name": "cover",
+            "description": "Generate a cover image for your blog post"
+          }
+        ],
+        "disambiguation": []
+      }
+    ]
+  },
+  "configuration": [
+    {
+      "title": "CoCover",
+      "properties": {
+        "cocover.apiKey": {
+          "type": "string",
+          "description": "API key to access OpenAI"
+        },
+        "cocover.apiUrl": {
+          "type": "string",
+          "description": "The azure endpoint to make AI requests to, to generate images"
+        }
+      }
+    }
+  ],
+  "scripts": {
+    "vscode:prepublish": "yarn run package",
+    "compile": "yarn run check-types && yarn run lint && node esbuild.js",
+    "watch": "npm-run-all -p watch:tsc",
+    "watch:esbuild": "node esbuild.js --watch",
+    "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
+    "package": "yarn run check-types && yarn run lint && node esbuild.js --production",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "yarn run compile-tests && yarn run compile && yarn run lint",
+    "check-types": "tsc --noEmit",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.8",
+    "@types/node": "20.x",
+    "@types/vscode": "^1.94.0",
+    "@typescript-eslint/eslint-plugin": "^8.7.0",
+    "@typescript-eslint/parser": "^8.7.0",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1",
+    "esbuild": "^0.24.0",
+    "eslint": "^9.11.1",
+    "npm-run-all": "^4.1.5",
+    "openai": "^4.67.3",
+    "typescript": "^5.6.2"
+  },
+  "dependencies": {
+    "cloudinary": "^2.5.1",
+    "sharp": "^0.33.5"
+  }
+}

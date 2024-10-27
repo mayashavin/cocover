@@ -1,5 +1,5 @@
 import * as vscode from "vscode";
-import { v2 as cloudinary, UploadApiResponse } from "cloudinary";
+import { v2 as cloudinary } from "cloudinary";
 import {
   getCloudinaryConfigs,
   getCloudinaryFolder,
@@ -57,7 +57,7 @@ export const uploadImage = async (
       }
     );
 
-    await uploadedResultActionHandler(uploadResult);
+    await uploadedResultActionHandler(uploadResult.secure_url);
   } catch (error) {
     console.error(error);
     vscode.window.showErrorMessage(
@@ -66,13 +66,13 @@ export const uploadImage = async (
   }
 };
 
-const uploadedResultActionHandler = async (uploadResult: UploadApiResponse) => {
+export const uploadedResultActionHandler = async (result: string) => {
   const actions = vscode.window.activeTextEditor
     ? [IMAGE_ACTIONS.INSERT_IMAGE, IMAGE_ACTIONS.COPY_URL]
     : [IMAGE_ACTIONS.COPY_URL];
 
   const followUpAnswer = await vscode.window.showInformationMessage(
-    "Image uploaded successfully. What would you like to do next?",
+    "Image saved successfully. What would you like to do next?",
     ...actions
   );
 
@@ -81,13 +81,10 @@ const uploadedResultActionHandler = async (uploadResult: UploadApiResponse) => {
     editor?.edit((editBuilder: vscode.TextEditorEdit) => {
       // const lines = editor.document.lineCount;
       const line = editor.document.lineAt(0);
-      editBuilder.insert(
-        line.range.end,
-        `\ncover_image: ${uploadResult.secure_url}`
-      );
+      editBuilder.insert(line.range.end, `\ncover_image: ${result}`);
     });
   } else if (followUpAnswer === "Copy URL") {
-    await vscode.env.clipboard.writeText(uploadResult.secure_url);
+    await vscode.env.clipboard.writeText(result);
     vscode.window.showInformationMessage("Image URL copied to clipboard.");
   }
 };

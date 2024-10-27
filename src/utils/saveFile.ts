@@ -5,6 +5,17 @@ import * as os from "os";
 import * as path from "path";
 import sharp from "sharp";
 
+export const getRandomFilename = (
+  prefix: string = "generated-cover",
+  extension?: string
+) => {
+  const randomFileName = crypto.randomBytes(20).toString("hex");
+  const withExtension = extension
+    ? `${randomFileName}.${extension}`
+    : randomFileName;
+  return `${prefix}-${withExtension}`;
+};
+
 export const saveAndResizeTempImage = async (url: string) => {
   const randomFileName = crypto.randomBytes(20).toString("hex");
   const tempFileWithoutExtension = path.join(
@@ -24,7 +35,7 @@ export const saveAndResizeTempImage = async (url: string) => {
   return smallFilePath;
 };
 
-async function downloadFile(
+export async function downloadFile(
   url: string,
   destPath: string,
   headers?: Record<string, string>

@@ -35,7 +35,6 @@ Full flow of generating cover image and uploading to Cloudinary:
 #### Demo using Local Save
 
 ![Demo of saving the generated image locally](https://res.cloudinary.com/mayashavin/image/upload/v1730116064/cocover/fullflow_save.gif)
-\!\[feature X\]\(images/feature-x.png\)
 
 ### Fix SEO content issues
 

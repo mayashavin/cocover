@@ -4,9 +4,20 @@
   "publisher": "mayashavin",
   "description": "Your SEO assistant in generating nice cover images, writting better content and saving time.",
   "version": "0.0.1",
+  "icon": "./Cocover.png",
   "engines": {
     "vscode": "^1.94.0"
   },
+  "tags": [
+    "SEO",
+    "Content",
+    "Cover Image",
+    "cdn",
+    "cloudinary",
+    "image",
+    "openai",
+    "dalle"
+  ],
   "categories": [
     "AI",
     "Chat"
@@ -72,7 +83,7 @@
         "isSticky": true,
         "commands": [
           {
-            "name": "cover",
+            "name": "image",
             "description": "Additional information to generate a cover image for your blog post or article"
           }
         ],
@@ -124,6 +135,7 @@
     "typescript": "^5.6.2"
   },
   "dependencies": {
+    "@vscode/extension-telemetry": "^0.9.7",
     "cloudinary": "^2.5.1",
     "sharp": "^0.33.5"
   }

@@ -1,71 +1,69 @@
-# cocover README
+# CoCover AI - GitHub Copilot Extension
 
-This is the README for your extension "cocover". After writing up a brief description, we recommend including the following sections.
+<img src="./Cocover.png" height=64 style="margin:auto; display:block;"/>
 
-## Features
+Your AI Assistant that helps to enhance your markdown content with generated professional cover images and SEO-optimized titles, saving your valuable time and improving your content's quality.
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
-
-For example if there is an image subfolder under your extension project workspace:
-
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+Leverage GPT-4o and Dall-E 3 to generate cover images based on your markdown content's title and description. You can then upload the generated cover image to Cloudinary and insert the image URL to your markdown file.
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+- GitHub Copilot extension installed. (with GPT-4o model recommended)
+- OpenAI Subscription for Dall-E 3 image generation. You need to provide API Key when generating cover images.
+- Cloudinary account (_optional_). You will need to provide your key, Client Secret, and Cloud Name when uploading the generated cover image to Cloudinary.
+
+## Features
+
+CoCover AI extension provides the following features:
+
+### Cover Image Generation
+
+1. Copy the title/description content of your post as attachment to the chat using CoPilot's context menu "Add Selection to Chat".
+2. Generate cover image based on the title and description of your markdown content using the command `@cocover /image` in the GitHub Copilot Chat. You can provide any customization prompt to the command.
+   ![Demo of generating image from selected text](https://res.cloudinary.com/mayashavin/image/upload/v1730116072/cocover/demo_cocover_1.gif)
+3. Save the generated cover image to your local project, or upload to your Cloudinary account.
+4. Insert the generated cover image's URL to your markdown file as part of the content header (follow the YAML standard as `cover_image` field).
+
+#### Demo using Cloudinary
+
+![Demo of uploading the generated image to Cloudinary](https://res.cloudinary.com/mayashavin/image/upload/v1730116064/cocover/cocover_cloudinary.gif)
+
+Full flow of generating cover image and uploading to Cloudinary:
+
+![Full flow of generating cover image and uploading to Cloudinary](https://res.cloudinary.com/mayashavin/image/upload/v1730116064/cocover/full_flow_cloudinary.gif)
+
+#### Demo using Local Save
+
+![Demo of saving the generated image locally](https://res.cloudinary.com/mayashavin/image/upload/v1730116064/cocover/fullflow_save.gif)
+\!\[feature X\]\(images/feature-x.png\)
+
+### Fix SEO content issues
+
+- Coming soon!
 
 ## Extension Settings
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
 This extension contributes the following settings:
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+- `cocover.enable`: Enable/disable this extension.
 
 ## Known Issues
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+TBD
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
+Below are the list of versions and their release notes for CoCover AI extension.
 
-### 1.0.0
+### 0.0.1
 
-Initial release of ...
+Initial release of CoCover with the first feature of generating cover images.
 
-### 1.0.1
+## Disclaimer
 
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+- There is no guarantee that the extension will continue to work as-is without any issues or side-effects. Please use it at your own risk.
+- This extension never uses/stores your personally identifiable information.
+- We assume no responsibility of any issues that you may face using this extension. Your use of OpenAI services is subject to OpenAI's Privacy Policy and Terms of Use.
+- If you would like to help us improve our features please enable the telemetry in the settings. It's disabled by default but if you enable it, it will start collecting metadata to improve its features. No personally identifiable information is collected. You can opt-out from telemetry either by setting the global 'telemetry.telemetryLevel' or by setting 'cocover.telemetry.disable' to true(Disabled by default).
+- The extension will respect both of these settings and will collect metadata only if both allow telemetry. We use the official telemetry package provided by the vscode team here to understand this extension's usage patterns to better plan new feature releases.
+- 💻 OpenAI: <https://openai.com/>

@@ -1,6 +1,6 @@
 # CoCover AI - GitHub Copilot Extension
 
-<img src="./Cocover.png" height=64 style="margin:auto; display:block;"/>
+<img alt="CoCover logo" src="https://res.cloudinary.com/mayashavin/image/upload//v1729086316/cocover/Cocover.png" height=64 style="margin:auto; display:block;" >
 
 Your AI Assistant that helps to enhance your markdown content with generated professional cover images and SEO-optimized titles, saving your valuable time and improving your content's quality.
 
@@ -56,7 +56,7 @@ TBD
 
 Below are the list of versions and their release notes for CoCover AI extension.
 
-### 0.0.1
+### 0.0.2
 
 Initial release of CoCover with the first feature of generating cover images.
 

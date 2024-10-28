@@ -1,8 +1,8 @@
 {
   "name": "cocover",
   "displayName": "CoCover",
-  "publisher": "mayashavin",
-  "description": "Your SEO assistant in generating nice cover images, writting better content and saving time.",
+  "publisher": "mayashavinstudio",
+  "description": "Your AI Assistant in enhancing your markdown content with generated professional cover images and SEO-optimized titles, saving your valuable time and improving your content's quality.",
   "version": "0.0.2",
   "icon": "./Cocover.png",
   "engines": {
@@ -27,9 +27,6 @@
     "AI",
     "Chat"
   ],
-  "galleryBanner": {
-    "color": "#e47928"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/mayashavin/cocover"

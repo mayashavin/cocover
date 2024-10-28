@@ -146,5 +146,8 @@
   "homepage": "https://github.com/mayashavin/cocover/blob/main/README.md",
   "bugs": {
     "url": "https://github.com/mayashavin/cocover/issues"
+  },
+  "sponsor": {
+    "url": "https://github.com/sponsors/mayashavin"
   }
 }

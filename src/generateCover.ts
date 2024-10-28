@@ -14,13 +14,14 @@ export const generateCover = async (
   token: vscode.CancellationToken
 ) => {
   try {
-    // const reference = request.references[0]?.value;
-    // const selectedText = reference
-    //   ? await vscode.window.activeTextEditor?.document.getText(
-    //       (reference as vscode.Location).range
-    //     )
-    //   : "";
-    if (!request.prompt?.trim()) {
+    const reference = request.references[0]?.value;
+    const selectedText = reference
+      ? await vscode.window.activeTextEditor?.document.getText(
+          (reference as vscode.Location).range
+        )
+      : "";
+    const hasPrompt = request.prompt?.trim() || selectedText?.trim();
+    if (!hasPrompt) {
       throw new Error("Prompt is required to generate the image.");
     }
 
@@ -34,11 +35,9 @@ export const generateCover = async (
 
     stream.progress(getProgressMessage());
 
-    const cleanUserPrompt = await getImprovedPrompt(
-      request.prompt!,
-      models[0],
-      token
-    );
+    const prompt = `${request.prompt || ""}\n${selectedText || ""}`;
+
+    const cleanUserPrompt = await getImprovedPrompt(prompt!, models[0], token);
 
     stream.progress(getProgressMessage());
 

@@ -2,7 +2,7 @@
   "name": "cocover",
   "displayName": "CoCover",
   "publisher": "mayashavin",
-  "description": "To generate a cover image for your blog posts",
+  "description": "Your SEO assistant in generating nice cover images, writting better content and saving time.",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.94.0"
@@ -37,7 +37,7 @@
       "cocover.submenu": [
         {
           "command": "cocover.seocontent",
-          "title": "Fix content for SEO"
+          "title": "Fix content for SEO (coming soon)"
         },
         {
           "command": "inlineChat.start",
@@ -54,7 +54,7 @@
     "commands": [
       {
         "command": "cocover.seocontent",
-        "title": "Fix content for SEO",
+        "title": "Fix content for SEO (coming soon)",
         "category": "CoCover"
       },
       {
@@ -68,12 +68,12 @@
         "id": "cocover.cover",
         "fullName": "CoCover",
         "name": "cocover",
-        "description": "Would you like to generate a cover image for your blog post?",
+        "description": "Would you like to generate a cover image for your blog post or article?",
         "isSticky": true,
         "commands": [
           {
             "name": "cover",
-            "description": "Generate a cover image for your blog post"
+            "description": "Additional information to generate a cover image for your blog post or article"
           }
         ],
         "disambiguation": []

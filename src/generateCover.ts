@@ -10,6 +10,7 @@ const LANGUAGE_MODEL_FAMILY = "gpt-4o";
 export const generateCover = async (
   request: vscode.ChatRequest,
   context: vscode.ExtensionContext,
+  chatContext: vscode.ChatContext,
   stream: vscode.ChatResponseStream,
   token: vscode.CancellationToken
 ) => {
@@ -37,7 +38,12 @@ export const generateCover = async (
 
     const prompt = `${request.prompt || ""}\n${selectedText || ""}`;
 
-    const cleanUserPrompt = await getImprovedPrompt(prompt!, models[0], token);
+    const cleanUserPrompt = await getImprovedPrompt(
+      prompt!,
+      models[0],
+      chatContext,
+      token
+    );
 
     stream.progress(getProgressMessage());
 
@@ -69,9 +75,41 @@ export const generateCover = async (
 export const getImprovedPrompt = async (
   userPrompt: string,
   model: vscode.LanguageModelChat,
+  chatContext: vscode.ChatContext,
   token: vscode.CancellationToken
 ) => {
   const cleanUserPrompt = cleanPrompt(userPrompt);
+  // initialize the messages array with the prompt
+  // const messages = [
+  //   new vscode.LanguageModelChatMessage(
+  //     vscode.LanguageModelChatMessageRole.Assistant,
+  //     "You write creative prompts for an AI blog cover image generator. The user will give a title and description, and you must generate a prompt for DALL-E based on that phrase."
+  //   ),
+  // ];
+
+  // // get all the previous participant messages
+  // const previousMessages = chatContext.history.filter(
+  //   (h) => h instanceof vscode.ChatResponseTurn
+  // );
+
+  // // add the previous messages to the messages array
+  // previousMessages.forEach((m) => {
+  //   let fullMessage = "";
+  //   m.response.forEach((r) => {
+  //     const mdPart = r as vscode.ChatResponseMarkdownPart;
+  //     fullMessage += mdPart.value.value;
+  //   });
+  //   messages.push(vscode.LanguageModelChatMessage.Assistant(fullMessage));
+  // });
+
+  // // add in the user's message
+  // messages.push(
+  //   new vscode.LanguageModelChatMessage(
+  //     vscode.LanguageModelChatMessageRole.User,
+  //     cleanUserPrompt
+  //   )
+  // );
+
   const promptRequest = await model.sendRequest(
     [
       new vscode.LanguageModelChatMessage(
@@ -83,6 +121,7 @@ export const getImprovedPrompt = async (
         cleanUserPrompt
       ),
     ],
+    // messages,
     {},
     token
   );

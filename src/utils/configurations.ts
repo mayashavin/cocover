@@ -44,7 +44,8 @@ export async function getCloudinaryConfigs(context: vscode.ExtensionContext) {
 
   if (!cloudName) {
     cloudName = await vscode.window.showInputBox({
-      placeHolder: "Enter your CloudName",
+      title: "Your Cloudinary's Cloud Name",
+      placeHolder: "Enter your Cloud Name",
       prompt:
         "You can create an Cloudinary account [here](https://cloudinary.com)",
       validateInput: (value) =>
@@ -55,6 +56,7 @@ export async function getCloudinaryConfigs(context: vscode.ExtensionContext) {
   if (!apiKey) {
     apiKey = await vscode.window.showInputBox({
       placeHolder: "Enter your Cloudinary API Key",
+      title: "Cloudinary API Key",
       password: true,
       validateInput: (value) =>
         value && value.trim() ? "" : "API Key is required",
@@ -64,6 +66,7 @@ export async function getCloudinaryConfigs(context: vscode.ExtensionContext) {
   if (!apiSecret) {
     apiSecret = await vscode.window.showInputBox({
       placeHolder: "Enter your Cloudinary API Secret",
+      title: "Cloudinary API Secret",
       password: true,
       validateInput: (value) =>
         value && value.trim() ? "" : "API Secret is required for uploading",
@@ -91,6 +94,7 @@ export async function getCloudinaryFolder(context: vscode.ExtensionContext) {
 
   const newFolder = await vscode.window.showInputBox({
     placeHolder: "Enter the folder to upload the image",
+    title: "Image folder to upload",
     value: folder,
   });
 
@@ -107,6 +111,7 @@ export async function getCloudinaryPublicId(context: vscode.ExtensionContext) {
   const newPublicId = await vscode.window.showInputBox({
     placeHolder: "Enter the name for the image",
     value: publicId,
+    title: "Image file name",
     validateInput: (value) => (value && value.trim() ? "" : "Name is required"),
   });
 

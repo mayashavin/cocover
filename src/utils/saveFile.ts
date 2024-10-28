@@ -3,7 +3,7 @@ import * as https from "https";
 import * as fs from "fs";
 import * as os from "os";
 import * as path from "path";
-import sharp from "sharp";
+// import sharp from "sharp";
 
 export const getRandomFilename = (
   prefix: string = "generated-cover",
@@ -27,10 +27,11 @@ export const saveAndResizeTempImage = async (url: string) => {
   console.log(tmpFilePath);
 
   await downloadFile(url!, tmpFilePath);
-
   const smallFilePath = `${tempFileWithoutExtension}-small.png`;
   const inputBuffer = await fs.promises.readFile(tmpFilePath);
-  await sharp(inputBuffer).resize({ width: 400 }).toFile(smallFilePath);
+  await fs.promises.writeFile(smallFilePath, inputBuffer);
+
+  // await sharp(inputBuffer).resize({ width: 400 }).toFile(smallFilePath);
 
   return smallFilePath;
 };

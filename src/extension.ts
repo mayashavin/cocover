@@ -27,7 +27,7 @@ export function activate(exContext: vscode.ExtensionContext) {
       //TODO - History?
       //TODO - Let user configure what
       (reporter as TelemetryReporter)?.sendTelemetryEvent("generateCover");
-      await generateCover(request, exContext, stream, token);
+      await generateCover(request, exContext, context, stream, token);
     } else {
       stream.markdown(
         "Please use the command `/image` to generate a cover image."

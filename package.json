@@ -3,12 +3,13 @@
   "displayName": "CoCover",
   "publisher": "mayashavin",
   "description": "Your SEO assistant in generating nice cover images, writting better content and saving time.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "icon": "./Cocover.png",
   "engines": {
     "vscode": "^1.94.0"
   },
-  "tags": [
+  "preview": true,
+  "keywords": [
     "SEO",
     "Content",
     "Cover Image",
@@ -16,7 +17,11 @@
     "cloudinary",
     "image",
     "openai",
-    "dalle"
+    "dalle",
+    "copilot",
+    "chat",
+    "assistant",
+    "ai"
   ],
   "categories": [
     "AI",
@@ -134,15 +139,14 @@
     "esbuild": "^0.24.0",
     "eslint": "^9.11.1",
     "npm-run-all": "^4.1.5",
-    "openai": "^4.67.3",
     "typescript": "^5.6.2"
   },
   "dependencies": {
     "@vscode/extension-telemetry": "^0.9.7",
     "cloudinary": "^2.5.1",
-    "sharp": "^0.33.5"
+    "openai": "^4.67.3"
   },
-  "license": "MIT",
+  "license": "SEE LICENSE IN LICENSE",
   "homepage": "https://github.com/mayashavin/cocover/blob/main/README.md",
   "bugs": {
     "url": "https://github.com/mayashavin/cocover/issues"

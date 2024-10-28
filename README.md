@@ -24,6 +24,8 @@ CoCover AI extension provides the following features:
 3. Save the generated cover image to your local project, or upload to your Cloudinary account.
 4. Insert the generated cover image's URL to your markdown file as part of the content header (follow the YAML standard as `cover_image` field).
 
+**Notes**: There is **NO** history support yet.
+
 #### Demo using Cloudinary
 
 ![Demo of uploading the generated image to Cloudinary](https://res.cloudinary.com/mayashavin/image/upload/v1730116064/cocover/cocover_cloudinary.gif)

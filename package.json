@@ -42,43 +42,6 @@
     "onStartupFinished"
   ],
   "contributes": {
-    "menus": {
-      "editor/context": [
-        {
-          "when": "editorFocus && resourceLangId == markdown && editorHasSelection",
-          "group": "1_copilot@1",
-          "submenu": "cocover.submenu"
-        }
-      ],
-      "cocover.submenu": [
-        {
-          "command": "cocover.seocontent",
-          "title": "Fix content for SEO (coming soon)"
-        },
-        {
-          "command": "inlineChat.start",
-          "title": "Generate cover image"
-        }
-      ]
-    },
-    "submenus": [
-      {
-        "id": "cocover.submenu",
-        "label": "CoCover"
-      }
-    ],
-    "commands": [
-      {
-        "command": "cocover.seocontent",
-        "title": "Fix content for SEO (coming soon)",
-        "category": "CoCover"
-      },
-      {
-        "command": "cocover.generateFromSelection",
-        "title": "Generate a cover image for your blog post",
-        "category": "CoCover"
-      }
-    ],
     "chatParticipants": [
       {
         "id": "cocover.cover",
@@ -96,21 +59,6 @@
       }
     ]
   },
-  "configuration": [
-    {
-      "title": "CoCover",
-      "properties": {
-        "cocover.apiKey": {
-          "type": "string",
-          "description": "API key to access OpenAI"
-        },
-        "cocover.apiUrl": {
-          "type": "string",
-          "description": "The azure endpoint to make AI requests to, to generate images"
-        }
-      }
-    }
-  ],
   "scripts": {
     "vscode:prepublish": "yarn run package",
     "compile": "yarn run check-types && yarn run lint && node esbuild.js",

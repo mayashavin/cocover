@@ -153,6 +153,7 @@ export async function getCloudinaryPublicId(context: vscode.ExtensionContext) {
 
 export function extractCloudinaryConfigsFromURL(url: string) {
   const pattern = new RegExp(
+    // @ts-ignore */
     /cloudinary:\/\/(?P<cloud_name>[^:]+):(?P<api_key>[^@]+)@(?P<api_secret>.+)/gm
   );
 

@@ -35,11 +35,34 @@ export async function getCloudinaryConfigs(context: vscode.ExtensionContext) {
   let apiSecret = await context.secrets.get("cloudinary.api_secret");
 
   if (cloudName && apiKey && apiSecret) {
-    return {
-      cloudName,
-      apiKey,
-      apiSecret,
-    };
+    const answer = await vscode.window.showQuickPick(
+      [
+        {
+          label: "Use existing Cloudinary configurations",
+          picked: true,
+          type: "existing",
+        },
+        {
+          label: "Update Cloudinary configurations",
+          type: "update",
+        },
+      ],
+      {
+        canPickMany: false,
+      }
+    );
+
+    if (answer?.type === "existing") {
+      return {
+        cloudName,
+        apiKey,
+        apiSecret,
+      };
+    }
+
+    cloudName = "";
+    apiKey = "";
+    apiSecret = "";
   }
 
   if (!cloudName) {
@@ -50,7 +73,12 @@ export async function getCloudinaryConfigs(context: vscode.ExtensionContext) {
         "You can create an Cloudinary account [here](https://cloudinary.com)",
       validateInput: (value) =>
         value && value.trim() ? "" : "CloudName is required",
+      ignoreFocusOut: true,
     });
+
+    if (cloudName) {
+      context.secrets.store("cloudinary.cloud_name", cloudName);
+    }
   }
 
   if (!apiKey) {
@@ -60,7 +88,12 @@ export async function getCloudinaryConfigs(context: vscode.ExtensionContext) {
       password: true,
       validateInput: (value) =>
         value && value.trim() ? "" : "API Key is required",
+      ignoreFocusOut: true,
     });
+
+    if (apiKey) {
+      context.secrets.store("cloudinary.api_key", apiKey);
+    }
   }
 
   if (!apiSecret) {
@@ -70,21 +103,19 @@ export async function getCloudinaryConfigs(context: vscode.ExtensionContext) {
       password: true,
       validateInput: (value) =>
         value && value.trim() ? "" : "API Secret is required for uploading",
+      ignoreFocusOut: true,
     });
+
+    if (apiSecret) {
+      context.secrets.store("cloudinary.api_secret", apiSecret);
+    }
   }
 
-  if (cloudName && apiKey && apiSecret) {
-    context.secrets.store("cloudinary.cloud_name", cloudName);
-    context.secrets.store("cloudinary.api_key", apiKey);
-    context.secrets.store("cloudinary.api_secret", apiSecret);
-    return {
-      cloudName,
-      apiKey,
-      apiSecret,
-    };
-  } else {
-    return;
-  }
+  return {
+    cloudName,
+    apiKey,
+    apiSecret,
+  };
 }
 
 export async function getCloudinaryFolder(context: vscode.ExtensionContext) {
@@ -118,4 +149,22 @@ export async function getCloudinaryPublicId(context: vscode.ExtensionContext) {
   context.workspaceState.update("cloudinary.publicId", newPublicId);
 
   return newPublicId;
+}
+
+export function extractCloudinaryConfigsFromURL(url: string) {
+  const pattern = new RegExp(
+    /cloudinary:\/\/(?P<cloud_name>[^:]+):(?P<api_key>[^@]+)@(?P<api_secret>.+)/gm
+  );
+
+  const match = pattern.exec(url);
+
+  if (!match) {
+    return;
+  }
+
+  return {
+    cloudName: match.groups?.cloud_name,
+    apiKey: match.groups?.api_key,
+    apiSecret: match.groups?.api_secret,
+  };
 }

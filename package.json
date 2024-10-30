@@ -3,7 +3,7 @@
   "displayName": "CoCover",
   "publisher": "mayashavinstudio",
   "description": "Your AI Assistant in enhancing your markdown content with generated professional cover images and SEO-optimized titles, saving your valuable time and improving your content's quality.",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "icon": "./Cocover.png",
   "engines": {
     "vscode": "^1.94.0"

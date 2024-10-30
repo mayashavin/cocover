@@ -79,37 +79,6 @@ export const getImprovedPrompt = async (
   token: vscode.CancellationToken
 ) => {
   const cleanUserPrompt = cleanPrompt(userPrompt);
-  // initialize the messages array with the prompt
-  // const messages = [
-  //   new vscode.LanguageModelChatMessage(
-  //     vscode.LanguageModelChatMessageRole.Assistant,
-  //     "You write creative prompts for an AI blog cover image generator. The user will give a title and description, and you must generate a prompt for DALL-E based on that phrase."
-  //   ),
-  // ];
-
-  // // get all the previous participant messages
-  // const previousMessages = chatContext.history.filter(
-  //   (h) => h instanceof vscode.ChatResponseTurn
-  // );
-
-  // // add the previous messages to the messages array
-  // previousMessages.forEach((m) => {
-  //   let fullMessage = "";
-  //   m.response.forEach((r) => {
-  //     const mdPart = r as vscode.ChatResponseMarkdownPart;
-  //     fullMessage += mdPart.value.value;
-  //   });
-  //   messages.push(vscode.LanguageModelChatMessage.Assistant(fullMessage));
-  // });
-
-  // // add in the user's message
-  // messages.push(
-  //   new vscode.LanguageModelChatMessage(
-  //     vscode.LanguageModelChatMessageRole.User,
-  //     cleanUserPrompt
-  //   )
-  // );
-
   const promptRequest = await model.sendRequest(
     [
       new vscode.LanguageModelChatMessage(

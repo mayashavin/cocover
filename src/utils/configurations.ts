@@ -18,6 +18,8 @@ export async function getOpenAIKey(
 
   const newKey = await vscode.window.showInputBox({
     placeHolder: "Enter your OpenAI API key",
+    title: "OpenAI API Key",
+    ignoreFocusOut: true,
     prompt:
       "You can create an API key [here](https://platform.openai.com/api-keys)",
   });

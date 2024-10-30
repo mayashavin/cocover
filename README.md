@@ -56,6 +56,15 @@ TBD
 
 Below are the list of versions and their release notes for CoCover AI extension.
 
+### 0.0.5
+
+- Fix focus lost issue for the input box of configuration settings when user switches to another tab.
+- Adjust text content for the extension commands.
+
+### 0.0.3
+
+- Clean up the codebase and modify texts.
+
 ### 0.0.2
 
 Initial release of CoCover with the first feature of generating cover images.

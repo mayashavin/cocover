@@ -47,12 +47,12 @@
         "id": "cocover.cover",
         "fullName": "CoCover",
         "name": "cocover",
-        "description": "Would you like to generate a cover image for your blog post or article?",
+        "description": "Ask to generate a cover image or perform SEO fixes for your blog content",
         "isSticky": true,
         "commands": [
           {
             "name": "image",
-            "description": "Additional information to generate a cover image for your blog post or article"
+            "description": "Generate a cover image for your blog post or article"
           }
         ],
         "disambiguation": []

@@ -28,11 +28,11 @@ CoCover AI extension provides the following features:
 
 #### Demo using Cloudinary
 
-![Demo of uploading the generated image to Cloudinary](https://res.cloudinary.com/mayashavin/image/upload/v1730116064/cocover/cocover_cloudinary.gif)
+![Demo of uploading the generated image to Cloudinary](https://res.cloudinary.com/mayashavin/video/upload/v1730727594/cocover/cloudinary.mp4)
 
 Full flow of generating cover image and uploading to Cloudinary:
 
-![Full flow of generating cover image and uploading to Cloudinary](https://res.cloudinary.com/mayashavin/image/upload/v1730116064/cocover/full_flow_cloudinary.gif)
+![Full flow of generating cover image and uploading to Cloudinary](https://res.cloudinary.com/mayashavin/video/upload/v1730727372/cocover/inset.mp4)
 
 #### Demo using Local Save
 
